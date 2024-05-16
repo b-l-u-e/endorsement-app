@@ -15,6 +15,12 @@
 -  List the endorsements based on time was posted in ascending order
 
 
+<div style="text-align: center;">
 
-    ![Endorsement screenshot](screenshots/Stretch%20Goals.png)
+![Endorsement screenshot](screenshots/Stretch%20Goals.png)
+
+</div>
+  
+
+  
 
