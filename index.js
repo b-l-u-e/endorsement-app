@@ -4,7 +4,6 @@ import {
   ref,
   push,
   onValue,
-  update
 } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
 const appSettings = {
@@ -59,41 +58,27 @@ function renderEndorsements(endorsement) {
   const heartIcon = endorsementElement.querySelector(".fa-heart");
   const likeCountElement = endorsementElement.querySelector(".likeCount");
 
-  
-
   //  initial like count
-  likeCountElement.dataset.likeCount = 0
+  // likeCountElement.dataset.likeCount = 0;
 
   heartIcon.addEventListener("click", function () {
-    let likeCount = parseInt(likeCountElement.dataset.likeCount);
+    let likeCount = parseInt(likeCountElement.textContent);
 
     // Check if the heart icon is already solid
-    if (heartIcon.classList.contains("fa-solid")) {
+    if (heartIcon.classList.contains('fa-solid')) {
       // If it's solid, make it regular and decrease the like count
-      heartIcon.classList.remove("fa-solid");
-      heartIcon.classList.add("fa-regular");
+      heartIcon.classList.remove('fa-solid');
+      heartIcon.classList.add('fa-regular');
       likeCount -= 1;
     } else {
       // If it's not solid, make it solid and increase the like count
-      heartIcon.classList.remove("fa-regular");
-      heartIcon.classList.add("fa-solid");
+      heartIcon.classList.remove('fa-regular');
+      heartIcon.classList.add('fa-solid');
       likeCount += 1;
     }
-
-    update(endorsementsInDB, {
-      likeCount: likeCount,
-    });
-
-   
-    //  update the like count
-    likeCountElement.dataset.likeCount = likeCount;
-
+  
     // Update the text content to include the heart icon
     likeCountElement.innerHTML = `<i class="${heartIcon.classList}" aria-hidden="true"></i> ${likeCount}`;
-
-   
-
-
   });
 }
 
@@ -112,5 +97,3 @@ onValue(endorsementsInDB, (snapshot) => {
     renderEndorsements(endorsement);
   });
 });
-
-
