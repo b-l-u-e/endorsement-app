@@ -38,6 +38,18 @@ function clearFieldInputs() {
   messageInput.value = "";
 }
 
+
+document.addEventListener("contextmenu", e => e.preventDefault(), false);
+
+document.addEventListener("keydown", e => {
+  if (e.ctrlKey) {
+      e.stopPropagation();
+      e.preventDefault();
+  }
+});
+
+
+
 function renderEndorsements(endorsement) {
   const endorsementElement = document.createElement("li");
 
